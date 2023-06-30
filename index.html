@@ -17,6 +17,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
   </head>
 
   <body>
@@ -25,38 +27,38 @@
     <h4>My Weather App</h4>
     </div>
 
-    <form>
-      <input type="text" placeholder="&#128269; Type Name of City" />
-      <input class=search type="submit" value="Search" />
+    <form id="searchbar">
+      <input type="text" id="city-input" placeholder="&#128269; Type Name of City" />
+      <input class="search" type="submit" value="Search" />
     </form>
     </br>
 
     <div class="row">
-        <div class="col">
-        <h3>Manila</h3>
-        <h6>Thursday</br>
+        <div class="col-9">
+        <h3 id="current-city">Manila</h3>
+        <h6 id="current-day">Thursday</br>
             June 29, 2023 </br>
             17:37:00
         </h6>
         </div>
-        <div class="col" >
-        <h3>30°C</h3>
-        <img src="strongsun.png" width="55px" alt="" >
+        <div class="col-3" >
+        <h3 id="current-temp">30°C</h3>
+        <img src="strongsun.png" class="imgSun" width="55px" alt="" >
         </div>
     </div>
     </br>
     <div class="forecast">
-        <h5> Forecast: Clear Sky in Manila</h5>
+        <h5 id=description>Forecast: <span id=weather-descrip>windy</span> in <span id=location>Manila<span></h5>
         <span id="rain">7 mm Rain </span><br />
         <span id="humidity">45 % Humidity </span><br />
         <span id="wind">5 kmh Wind</span>
     </div>
    
-    <button>Current Location</button>
+    <button class="buttonLocation">Current Location</button>
 </div>
 </br>
 <div class="coder">
-<p><strong>Coded by: <a href="https://www.shecodes.io/graduates/82140-cecille-speckmaier" id="coder-name">C.M. Speckmaier</a></strong></p>
+<p><strong>Coded by: <a href="https://www.shecodes.io/graduates/82140-cecille-speckmaier" id="coder-name">C.M. Speckmaier</a></strong></br>Background Image by Freepik</p>
 </div>
 
     <script src="index.js"></script>
