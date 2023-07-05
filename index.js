@@ -22,7 +22,7 @@ function showWeather(response) {
   console.log(response.data);
   let currentTemp = document.querySelector("#current-temp");
   let temperature = response.data.main.temp.toFixed(0);
-  currentTemp.innerHTML = `${temperature}°C`;
+  currentTemp.innerHTML = `${temperature}° `;
 
   let rain = document.querySelector("#rain");
   let precipitation = response.data.rain
@@ -81,7 +81,7 @@ function showDescription(response) {
   let description = document.querySelector("#weather-descrip");
   description.innerHTML = `${response.data.weather["0"].description}`;
 }
-function defaultcity(city){
+function defaultcity(city) {
   let currentCity = document.querySelector("#current-city");
   currentCity.innerText = "Manila";
 
@@ -92,3 +92,5 @@ function defaultcity(city){
   axios.get(urlAPI).then(changeTime);
 }
 defaultcity();
+
+
