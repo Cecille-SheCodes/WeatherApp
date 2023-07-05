@@ -81,3 +81,14 @@ function showDescription(response) {
   let description = document.querySelector("#weather-descrip");
   description.innerHTML = `${response.data.weather["0"].description}`;
 }
+function defaultcity(city){
+  let currentCity = document.querySelector("#current-city");
+  currentCity.innerText = "Manila";
+
+  let apiKey = "e41d480a236e63c3ed66acc7310d68f6";
+  let urlAPI = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.innerText}&units=metric&appid=${apiKey}`;
+  axios.get(urlAPI).then(showWeather);
+  axios.get(urlAPI).then(showDescription);
+  axios.get(urlAPI).then(changeTime);
+}
+defaultcity();
