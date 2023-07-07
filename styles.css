@@ -42,20 +42,35 @@ form {
   padding: 0px 0px;
 }
 #current-temp {
-  font-size: 21px;
+  font-size: 25px;
   font-weight: 500;
+  }
+.fahrenheitColor {
+  color:blue;
 }
-.CTemp {
-  font-size: 15px;
+#CTemp {
+  font-size: 12px;
   font-weight: 500;
   color: black;
   text-decoration: none;
+  position: relative;
+  top: -9px;
+  cursor: default;
 }
-.FTemp {
-  font-size: 15px;
+#bar{
+  font-size: 12px;
+   color: black;
+   position: relative;
+  top: -9px;
+}
+#FTemp {
+  font-size: 12px;
   font-weight: 500;
   color: blue;
-  text-decoration: underline;
+  text-decoration: none;
+  position: relative;
+  top: -9px;
+  cursor: default;
 }
 .forecast {
   background-color: rgb(81, 80, 33);

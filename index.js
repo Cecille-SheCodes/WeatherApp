@@ -1,6 +1,4 @@
-//Searching for Specific City and showing the weather details
 
-let searchForm = document.querySelector("#searchbar");
 
 function searchCity(event) {
   event.preventDefault();
@@ -8,7 +6,6 @@ function searchCity(event) {
   let searchedCity = document.querySelector("#city-input");
   let currentCity = document.querySelector("#current-city");
   currentCity.innerText = `${searchedCity.value}`;
-
   let apiKey = "e41d480a236e63c3ed66acc7310d68f6";
   let urlAPI = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.innerText}&units=metric&appid=${apiKey}`;
   axios.get(urlAPI).then(showWeather);
@@ -16,13 +13,15 @@ function searchCity(event) {
   axios.get(urlAPI).then(changeTime);
 }
 
+let searchForm = document.querySelector("#searchbar");
 searchForm.addEventListener("submit", searchCity);
 
 function showWeather(response) {
   console.log(response.data);
+  Ctemperature = response.data.main.temp.toFixed(0);
+  let temperature = Ctemperature;
   let currentTemp = document.querySelector("#current-temp");
-  let temperature = response.data.main.temp.toFixed(0);
-  currentTemp.innerHTML = `${temperature}° `;
+    currentTemp.innerHTML = `${temperature}`;
 
   let rain = document.querySelector("#rain");
   let precipitation = response.data.rain
@@ -84,13 +83,32 @@ function showDescription(response) {
 function defaultcity(city) {
   let currentCity = document.querySelector("#current-city");
   currentCity.innerText = "Manila";
-
   let apiKey = "e41d480a236e63c3ed66acc7310d68f6";
   let urlAPI = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.innerText}&units=metric&appid=${apiKey}`;
   axios.get(urlAPI).then(showWeather);
   axios.get(urlAPI).then(showDescription);
   axios.get(urlAPI).then(changeTime);
 }
+
+
+function showFTemp(event) {
+  event.preventDefault();
+  let Ftemperature = (Ctemperature * 9) / 5 + 32;
+  let convertedTemp = document.querySelector("#current-temp");
+  convertedTemp.classList.add("fahrenheitColor");
+  convertedTemp.innerHTML = `${Math.round(Ftemperature)} `;
+}
+function showCTemp(event) {
+  event.preventDefault();
+  let convertedTemp = document.querySelector("#current-temp");
+  convertedTemp.classList.remove("fahrenheitColor");
+  convertedTemp.innerHTML = Math.round(Ctemperature);
+  
+}
+
+let converttoF = document.querySelector("#FTemp");
+converttoF.addEventListener("click", showFTemp);
+let Ctemperature = null;
+let converttoC = document.querySelector("#CTemp");
+converttoC.addEventListener("click", showCTemp);
 defaultcity();
-
-
