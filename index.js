@@ -101,6 +101,27 @@ function showCTemp(event) {
   convertedTemp.classList.remove("fahrenheitColor");
   convertedTemp.innerHTML = Math.round(Ctemperature);
 }
+function displayForecast() {
+  let forecastElement = document.querySelector(".dayforecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+      <div id="day">${day}</div>
+      <img id="icon" src="strongsun.png" alt="" width="30px">
+      <div><span id="max-temp">12</span><span>°</span>
+      <span id="min-temp">10</span><span>°</span></div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 let converttoF = document.querySelector("#FTemp");
 converttoF.addEventListener("click", showFTemp);
@@ -108,3 +129,4 @@ let Ctemperature = null;
 let converttoC = document.querySelector("#CTemp");
 converttoC.addEventListener("click", showCTemp);
 defaultcity();
+displayForecast();
