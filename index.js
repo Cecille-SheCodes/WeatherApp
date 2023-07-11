@@ -1,5 +1,3 @@
-
-
 function searchCity(event) {
   event.preventDefault();
 
@@ -21,7 +19,7 @@ function showWeather(response) {
   Ctemperature = response.data.main.temp.toFixed(0);
   let temperature = Ctemperature;
   let currentTemp = document.querySelector("#current-temp");
-    currentTemp.innerHTML = `${temperature}`;
+  currentTemp.innerHTML = `${temperature}`;
 
   let rain = document.querySelector("#rain");
   let precipitation = response.data.rain
@@ -90,7 +88,6 @@ function defaultcity(city) {
   axios.get(urlAPI).then(changeTime);
 }
 
-
 function showFTemp(event) {
   event.preventDefault();
   let Ftemperature = (Ctemperature * 9) / 5 + 32;
@@ -103,7 +100,6 @@ function showCTemp(event) {
   let convertedTemp = document.querySelector("#current-temp");
   convertedTemp.classList.remove("fahrenheitColor");
   convertedTemp.innerHTML = Math.round(Ctemperature);
-  
 }
 
 let converttoF = document.querySelector("#FTemp");
