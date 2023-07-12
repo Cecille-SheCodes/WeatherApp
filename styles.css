@@ -97,10 +97,15 @@ button {
 
 .dayforecast {
   margin: 15px auto;
-  display: block;
   font-size: 12px;
   text-align: center;
 }
+#nextdays {
+  text-align: center;
+  margin: 15px auto;
+  max-width: 280px;
+}
+
 #max-temp {
   color: goldenrod;
   font-weight: bold;

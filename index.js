@@ -15,7 +15,6 @@ let searchForm = document.querySelector("#searchbar");
 searchForm.addEventListener("submit", searchCity);
 
 function showWeather(response) {
-  console.log(response.data);
   Ctemperature = response.data.main.temp.toFixed(0);
   let temperature = Ctemperature;
   let currentTemp = document.querySelector("#current-temp");
@@ -38,7 +37,10 @@ function showWeather(response) {
   let weatherIcon = document.querySelector(".imgSun");
   let icon = response.data.weather[0].icon;
   weatherIcon.src = `https://openweathermap.org/img/wn/${icon}.png`;
+
+  getForecast(response.data.coord);
 }
+
 function changeTime(response) {
   let timezone = response.data.timezone;
   let now = new Date();
@@ -101,12 +103,20 @@ function showCTemp(event) {
   convertedTemp.classList.remove("fahrenheitColor");
   convertedTemp.innerHTML = Math.round(Ctemperature);
 }
-function displayForecast() {
+
+function getForecast(coordinates) {
+  let apiKey = "bd3bb6534458ba51b48c49f5155745b6";
+  let urlAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
+  console.log(urlAPI);
+  axios.get(urlAPI).then(displayForecast);
+}
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector(".dayforecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
 
-  let forecastHTML = `<div class="row">`;
+  let forecastHTML = `<div class="row" id=nextdays>`;
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
