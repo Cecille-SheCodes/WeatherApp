@@ -111,21 +111,20 @@ function getForecast(coordinates) {
   axios.get(urlAPI).then(displayForecast);
 }
 
-function formatDay(timestamp){
-  let date =new Date(timestamp*1000);
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
-
 }
 
 function displayForecast(response) {
-  let forecast=response.data.daily;
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector(".dayforecast");
 
   let forecastHTML = `<div class="row" id=nextdays>`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6){
+    if (index > 0 && index < 7) {
       forecastHTML =
         forecastHTML +
         `<div class="col-2">

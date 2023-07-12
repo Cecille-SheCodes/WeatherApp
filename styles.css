@@ -84,7 +84,10 @@ form {
 }
 h5 {
   font-family: Itim;
-  font-weight: 900;
+  font-weight: 500;
+}
+#weather-descrip {
+  text-transform: capitalize;
 }
 button {
   background-color: rgb(210, 152, 6);
